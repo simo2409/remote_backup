@@ -1,0 +1,25 @@
+---
+# remote_backup config file
+
+# Directory to backup
+dir_to_backup: './'
+
+# Name of the backup. if empty it will be generated automatically using date/time. 201105121627.tar.gz means 2011-05-12 16:27
+fixed_name: ''
+
+# If it's true the directory where put backup is on a remote FTP (it will use destination_path on FTP)
+remote_backup: false
+remote_host: ''
+remote_username: ''
+remote_password: ''
+
+# Directory where put backup
+destination_path: ''
+
+# If it's true remote_backup will not produce output
+silent: false
+
+# Directory to use temporary to store compressed backup
+temporary_path: '.'
+# Path to tar executable
+tar_bin: /usr/bin/tar
