@@ -1,3 +1,6 @@
+remote_backup
+=============
+
 remote_backup is a simple tool to make backup of a directory and store it locally or remotely (using FTP). Backups are compressed creating a tar.gz file.
 
 Before using remote_backup you need to edit his config.yml file where there are all settings.
