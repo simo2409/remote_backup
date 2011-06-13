@@ -8,7 +8,7 @@ Before using remote_backup you need to edit his config.yml file where there are 
 Settings explanation
 --------------------
 * **dir_to_backup** the directory that you want to backup
-* **fixed_name** you can set a filename for the backup, it it's empty remote_backup will generate a dynamic filename using date and time (for example 201105121627.tar.gz that means "backupped on 2001-05-12 at 16:27")
+* **fixed_name** you can set a filename for the backup, it it's empty remote_backup will generate a dynamic filename using date and time (for example 201105121627.tar.gz that means "backupped on 2011-05-12 at 16:27")
 * **remote_backup** if it's true means that you want to put your backup file on a remote FTP server
 * **remote_host** this is the host of your FTP server (if you are doing a local backup you don't need to fill it)
 * **remote_username** this is the username of the user of your FTP server (if you are doing a local backup you don't need to fill it)
