@@ -9,7 +9,7 @@ Features list
 -------------
 * It can backup a directory locally or remotely (over FTP)
 * It has a clear config file to customize his behaviour and to cover your backup needs
-* It store backup files with a meaningful filename (but you can use a fixed name if you want)
+* It stores backup files with a meaningful filename (but you can use a fixed name if you want)
 * It can delete old backups
 * It works under ruby 1.9.2
 
