@@ -29,6 +29,7 @@ Settings explanation
 * **remote_username** this is the username of the user of your FTP server (if you are doing a local backup you don't need to fill it)
 * **remote_password** this is the password of the user of your FTP server (if you are doing a local backup you don't need to fill it)
 * **destination_path** this is the path where you want to store your backup file. If you are doing a remote backup this path will be used to place backup file in your FTP
+* **clear_old_backups** if it's true means that you want **remote_backup** delete backup in **destination_path** older than 7 days (it works just if you DON'T use **fixed_name**)
 * **silent** if it's true remote_backup will not produce output (except for errors)
 * **temporary_path** this is where remote_backup store the backup file before placing it on the final destination
 * **tar_bin** this is the path of tar command on your computer
