@@ -1,9 +1,24 @@
 remote_backup
 =============
 
-remote_backup is a simple tool to make backup of a directory and store it locally or remotely (using FTP). Backups are compressed creating a tar.gz file.
+remote_backup is a simple 'day-to-day backupper' tool to make backup of a directory and store it locally or remotely (using FTP). Backups are compressed creating a tar.gz file.
 
 Before using remote_backup you need to edit his config.yml file where there are all settings.
+
+Features list
+-------------
+* It can backup a directory locally or remotely (over FTP)
+* It has a clear config file to customize his behaviour and to cover your backup needs
+* It store backup files with a meaningful filename (but you can use a fixed name if you want)
+* It can delete old backups
+* It works under ruby 1.9.2
+
+Dependencies
+------------
+* ruby
+* rubygem
+* YAML rubygem
+* ActiveSupport rubygem (just if you want remote_backup deletes old backups)
 
 Settings explanation
 --------------------
