@@ -23,12 +23,14 @@ now = Time.now
 config['fixed_name'] = now.strftime("%Y%m%d%H%M") + '.tar.gz' if config['fixed_name'].empty?
 
 # Executing pre_backup_command
-print "Executing pre_backup_command ('#{config['pre_backup_command']}') .. "
-if system(config['pre_backup_command'])
-  puts 'OK' unless config['silent']
-else
-  puts 'ERROR'
-  exit
+unless config['pre_backup_command'].empty?
+  print "Executing pre_backup_command ('#{config['pre_backup_command']}') .. "
+  if system(config['pre_backup_command'])
+    puts 'OK' unless config['silent']
+  else
+    puts 'ERROR'
+    exit
+  end
 end
 
 # Checks data for remote backup
@@ -90,12 +92,14 @@ else
 end
 
 # Executing post_backup_command
-print "Executing post_backup_command ('#{config['post_backup_command']}') .. "
-if system(config['post_backup_command'])
-  puts 'OK' unless config['silent']
-else
-  puts 'ERROR'
-  exit
+unless config['post_backup_command'].empty?
+  print "Executing post_backup_command ('#{config['post_backup_command']}') .. "
+  if system(config['post_backup_command'])
+    puts 'OK' unless config['silent']
+  else
+    puts 'ERROR'
+    exit
+  end
 end
 
 # Cleaning temporary destination
