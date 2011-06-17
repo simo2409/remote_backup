@@ -1,6 +1,6 @@
 require 'yaml'
 
-config_file = File.expand_path('./config.yml')
+config_file = File.join(File.expand_path(File.dirname(__FILE__)), 'config.yml')
 
 # Checking config file presence
 raise 'Unable to find config.yml' unless File.exist?(config_file)
