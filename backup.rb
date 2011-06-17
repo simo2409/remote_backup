@@ -1,7 +1,7 @@
 require 'yaml'
 
 # Checking config file presence
-raise 'Unable to find config.yml' unless File.exist?('./config.yml')
+raise 'Unable to find config.yml' unless File.exist?(File.expand_path('./config.yml'))
 
 # Loading config file
 config = YAML::load(File.open('./config.yml'))
