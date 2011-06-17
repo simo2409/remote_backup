@@ -1,10 +1,12 @@
 require 'yaml'
 
+config_file = File.expand_path('./config.yml')
+
 # Checking config file presence
-raise 'Unable to find config.yml' unless File.exist?(File.expand_path('./config.yml'))
+raise 'Unable to find config.yml' unless File.exist?(config_file)
 
 # Loading config file
-config = YAML::load(File.open('./config.yml'))
+config = YAML::load(File.open(config_file))
 
 # Loading ActiveSupport if needed
 require 'active_support/all' if config['clear_old_backups']
