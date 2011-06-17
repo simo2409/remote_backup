@@ -19,6 +19,12 @@ destination_path: './'
 # If it's true remote_backup will delete backups in 'destination_path' older than 7 days (it works just if 'fixed_name' was not used)
 clear_old_backups: false
 
+# This is a command to execute before the backup happens
+pre_backup_command: ''
+
+# This is a command to execute after the backup happens
+post_backup_command: ''
+
 # If it's true remote_backup will not produce output
 silent: false
 

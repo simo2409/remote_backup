@@ -22,6 +22,15 @@ now = Time.now
 # Creates dynamic backup name based on date/hour. 201105121627.tar.gz means 2011-05-12 16:27
 config['fixed_name'] = now.strftime("%Y%m%d%H%M") + '.tar.gz' if config['fixed_name'].empty?
 
+# Executing pre_backup_command
+print "Executing pre_backup_command ('#{config['pre_backup_command']}') .. "
+if system(config['pre_backup_command'])
+  puts 'OK' unless config['silent']
+else
+  puts 'ERROR'
+  exit
+end
+
 # Checks data for remote backup
 if config['remote_backup']
   raise 'FTP host not set'      unless config['remote_host'] || config['remote_host'].empty?
@@ -78,6 +87,15 @@ else
       puts 'ERROR'
     end
   end
+end
+
+# Executing post_backup_command
+print "Executing post_backup_command ('#{config['post_backup_command']}') .. "
+if system(config['post_backup_command'])
+  puts 'OK' unless config['silent']
+else
+  puts 'ERROR'
+  exit
 end
 
 # Cleaning temporary destination
