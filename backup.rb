@@ -65,7 +65,7 @@ if config['remote_backup']
     ftp.put(full_temporary_path)
     if config['clear_old_backups']
       # Cleaning old backups
-      old_backup_to_delete = (now - 3.days).strftime("%Y%m%d%H%M") + '.tar.gz'
+      old_backup_to_delete = (now - 7.days).strftime("%Y%m%d%H%M") + '.tar.gz'
       ftp.delete(old_backup_to_delete)
     end
     ftp.close
