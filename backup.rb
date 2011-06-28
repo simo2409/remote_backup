@@ -21,8 +21,8 @@ config['silent'] = false  unless config['silent']
 
 now = Time.now
 
-# Creates dynamic backup name based on date/hour. 201105121627.tar.gz means 2011-05-12 16:27
-config['fixed_name'] = now.strftime("%Y%m%d%H%M") + '.tar.gz' if config['fixed_name'].empty?
+# Creates dynamic backup name based on date/hour. backup201105121627.tar.gz means 2011-05-12 16:27
+config['fixed_name'] = 'backup' + now.strftime("%Y%m%d%H%M") + '.tar.gz' if config['fixed_name'].empty?
 
 # Executing pre_backup_command
 unless config['pre_backup_command'].empty?
@@ -65,7 +65,7 @@ if config['remote_backup']
     ftp.put(full_temporary_path)
     if config['clear_old_backups']
       # Cleaning old backups
-      old_backup_to_delete = (now - 7.days).strftime("%Y%m%d%H%M") + '.tar.gz'
+      old_backup_to_delete = 'backup' + (now - 7.days).strftime("%Y%m%d%H%M") + '.tar.gz'
       ftp.delete(old_backup_to_delete)
     end
     ftp.close
@@ -83,7 +83,7 @@ else
   end
   if config['clear_old_backups']
     # Cleaning old backups
-    old_backup_to_delete = (now - 7.days).strftime("%Y%m%d") + '*'
+    old_backup_to_delete = 'backup' + (now - 7.days).strftime("%Y%m%d") + '*'
     print "Deleting old backup .. " unless config['silent']
     if system('rm ' + File.join(config['destination_path'], old_backup_to_delete))
       puts 'OK' unless config['silent']

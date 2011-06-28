@@ -4,7 +4,7 @@
 # Directory to backup
 dir_to_backup: './'
 
-# Name of the backup. if empty it will be generated automatically using date/time. 201105121627.tar.gz means 2011-05-12 16:27
+# Name of the backup. if empty it will be generated automatically using date/time. backup201105121627.tar.gz means 2011-05-12 16:27
 fixed_name: ''
 
 # If it's true the directory where put backup is on a remote FTP (it will use destination_path on FTP)
