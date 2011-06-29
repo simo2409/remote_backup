@@ -16,8 +16,11 @@ remote_password: ''
 # Directory where put backup
 destination_path: './'
 
-# If it's true remote_backup will delete backups in 'destination_path' older than 7 days (it works just if 'fixed_name' was not used)
+# If it's true remote_backup will delete older backups in 'destination_path' except what you want to preserve using 'preserve_list_of_old_backup' value (it does work just if you didn't set a 'fixed_name' value for your backups)
 clear_old_backups: false
+
+# In this array you can specify (in days) which old backups have to be preserved from the delete. From example 1 means "save from the delete the backup of yesterday" (every value is referred to the moment the script is executed). It works only if 'clear_old_backups' value is true and if you didn't set a 'fixed_name' value for your backups.
+preserve_list_of_old_backup: [1, 2, 3, 4, 5, 6, 7] # yesterday, 2 days ago, 3 days ago and so on
 
 # This is a command to execute before the backup happens
 pre_backup_command: ''
