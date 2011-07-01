@@ -113,7 +113,7 @@ if config['remote_backup']
   end
 else
   print "local destination (#{full_destination_path}) .. " unless config['silent']
-  if system('mv ' + full_temporary_path + ' ' + full_destination_path)
+  if system('cp ' + full_temporary_path + ' ' + full_destination_path)
     puts 'OK' unless config['silent']
   else
     puts 'ERROR'
