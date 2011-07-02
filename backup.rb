@@ -113,10 +113,14 @@ if config['remote_backup']
   end
 else
   print "local destination (#{full_destination_path}) .. " unless config['silent']
-  if system('cp ' + full_temporary_path + ' ' + full_destination_path)
-    puts 'OK' unless config['silent']
+  if full_temporary_path == full_destination_path
+    puts "NOT NEEDED (temporary directory is the same of final destination)" unless config['silent']
   else
-    puts 'ERROR'
+    if system('cp ' + full_temporary_path + ' ' + full_destination_path)
+      puts 'OK' unless config['silent']
+    else
+      puts 'ERROR'
+    end
   end
   if config['clear_old_backups']
     # Cleaning old backups
@@ -149,8 +153,12 @@ end
 
 # Cleaning temporary destination
 print 'Cleaning temp file .. ' unless config['silent']
-if system('rm ' + full_temporary_path)
-  puts 'OK' unless config['silent']
+if full_temporary_path == full_destination_path
+  puts "NOT NEEDED (temporary directory is the same of final destination)" unless config['silent']
 else
-  puts 'ERROR'
+  if system('rm ' + full_temporary_path)
+    puts 'OK' unless config['silent']
+  else
+    puts 'ERROR'
+  end
 end
