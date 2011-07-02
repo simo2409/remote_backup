@@ -19,10 +19,6 @@ if config['clear_old_backups']
     if config['preserve_list_of_old_backup'].any?
       config['preserve_list_of_old_backup'] << 0 # 0 identifies the today's backup
       to_preserve = []
-      if config['remote_backup']
-      else
-        
-      end
       config['preserve_list_of_old_backup'].each do |save_me|
         if format == 'local'
           to_preserve << File.join(config['destination_path'], 'backup' + (now - save_me.days).strftime(date_format) + '.tar.gz')
