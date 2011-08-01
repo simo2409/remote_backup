@@ -9,7 +9,7 @@ raise 'Unable to find config.yml' unless File.exist?(config_file)
 config = YAML::load(File.open(config_file))
 
 now = Time.now
-date_format = "%Y%m%d"
+date_format = "%Y%m%d%H%M"
 
 if config['clear_old_backups']
   # Loading ActiveSupport if needed
