@@ -39,7 +39,7 @@ raise "Unable to find destination path (it should be #{config['destination_path'
 raise "Unable to find temporary path (it should be #{config['temporary_path']})" unless File.exist?(config['temporary_path'])
 config['fixed_name'] = '' unless config['fixed_name']
 config['silent'] = false  unless config['silent']
-raise "There is a non expected value in 'preserve_list_of_old_backup'" if !config['preserve_list_of_old_backup'].is_a?(Array) || config['preserve_list_of_old_backup'].select {|i| !i.is_a?(Fixnum)}.any?
+raise "There is a non expected value in 'preserve_list_of_old_backup'" if config['clear_old_backups'] && (!config['preserve_list_of_old_backup'].is_a?(Array) || config['preserve_list_of_old_backup'].select {|i| !i.is_a?(Fixnum)}.any?)
 
 # Checks data for remote backup
 if config['remote_backup']
