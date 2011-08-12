@@ -9,9 +9,12 @@ fixed_name: ''
 
 # If it's true the directory where put backup is on a remote FTP (it will use destination_path on FTP)
 remote_backup: false
+# This can be ftp or sftp
+remote_type: ftp
 remote_host: ''
 remote_username: ''
 remote_password: ''
+remote_port: 21
 
 # Directory where put backup
 destination_path: './'
