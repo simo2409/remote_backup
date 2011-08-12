@@ -62,23 +62,29 @@ end
 # Moving to destination
 print "Moving #{config['fixed_name']} to " unless config['silent']
 if config['remote_backup']
-  begin
-    print "FTP (#{config['remote_host']}) .. " unless config['silent']
+    print "#{config['remote_type'].upcase} (#{config['remote_host']}) .. " unless config['silent']
     if config['remote_type'] == 'ftp'
-      ftp = Net::FTP.new(config['remote_host'], config['remote_username'], config['remote_password'])
-      ftp.chdir(config['destination_path'])
-      ftp.put(full_temporary_path)
-      ftp.close
+      begin
+        ftp = Net::FTP.new(config['remote_host'], config['remote_username'], config['remote_password'])
+        ftp.chdir(config['destination_path'])
+        ftp.put(full_temporary_path)
+        ftp.close
+      rescue Net::FTPPermError
+        puts 'ERROR (Permission problem)'
+        exit
+      end
     else
-      Net::SFTP.start(config['remote_host'], config['remote_username'], :password => config['remote_password'], :port => config['remote_port']) do |sftp|
-        sftp.put_file full_temporary_path full_destination_path
+      begin
+        Net::SFTP.start(config['remote_host'], config['remote_username'], :password => config['remote_password'], :port => config['remote_port']) do |sftp|
+          sftp.put_file full_temporary_path full_destination_path
+        end
+      rescue Exception => e  
+        puts e.message  
+        puts e.backtrace.inspect
+        exit
       end
     end
     puts "OK" unless config['silent']
-  rescue Net::FTPPermError
-    puts 'ERROR (Permission problem)'
-    exit
-  end
 else
   print "local destination (#{full_destination_path}) .. " unless config['silent']
   if full_temporary_path == full_destination_path
