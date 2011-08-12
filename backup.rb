@@ -76,7 +76,7 @@ if config['remote_backup']
     else
       begin
         Net::SFTP.start(config['remote_host'], config['remote_username'], :password => config['remote_password'], :port => config['remote_port']) do |sftp|
-          sftp.put_file full_temporary_path, full_destination_path
+          sftp.upload! full_temporary_path, full_destination_path
         end
       rescue Exception => e  
         puts e.message  
