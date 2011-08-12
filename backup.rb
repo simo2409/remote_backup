@@ -68,12 +68,13 @@ if config['remote_backup']
       ftp = Net::FTP.new(config['remote_host'], config['remote_username'], config['remote_password'])
       ftp.chdir(config['destination_path'])
       ftp.put(full_temporary_path)
+      ftp.close
     else
-      sftp = Net::SFTP.start(config['remote_host'], config['remote_username'], :password => config['remote_password'], :port => config['remote_port'])
-      sftp.put_file full_temporary_path full_destination_path
+      Net::SFTP.start(config['remote_host'], config['remote_username'], :password => config['remote_password'], :port => config['remote_port']) do |sftp|
+        sftp.put_file full_temporary_path full_destination_path
+      end
     end
     puts "OK" unless config['silent']
-    ftp.close
   rescue Net::FTPPermError
     puts 'ERROR (Permission problem)'
     exit
