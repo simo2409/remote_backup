@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'yaml'
-
+ 
 config_file = File.join(File.expand_path(File.dirname(__FILE__)), 'config.yml')
 
 # Checking config file presence
@@ -79,8 +79,8 @@ if config['remote_backup']
         Net::SFTP.start(config['remote_host'], config['remote_username'], :password => config['remote_password'], :port => config['remote_port']) do |sftp|
           sftp.upload! full_temporary_path, full_destination_path
         end
-      rescue Exception => e  
-        puts e.message  
+      rescue Exception => e
+        puts e.message
         puts e.backtrace.inspect
         exit
       end
